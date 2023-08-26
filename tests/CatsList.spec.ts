@@ -14,7 +14,7 @@ test('VerifyElements', async ({ page }) => {
     await catsListPage.verifyElements();   
 });
 
-test('ViewCatDetails', async ({ page }) => {
+test('ViewElementDetails', async ({ page }) => {
     const loginPage = new LoginPage(page);
     const sidebarPage = new SidebarPage(page);
     const catsListPage = new CatsListPage(page);
@@ -22,5 +22,5 @@ test('ViewCatDetails', async ({ page }) => {
     await loginPage.loginAdministrator();
     await sidebarPage.goToCatsPage();
 
-    await catsListPage.viewCatElements();   
+    await catsListPage.viewElementDetails();   
 });

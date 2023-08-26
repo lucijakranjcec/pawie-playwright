@@ -25,7 +25,7 @@ export class CatsListPage {
         }  
     }
 
-    async viewCatElements() {
+    async viewElementDetails() {
         for (let i = 0; i < 10; i++) {
             await this.page.locator(`//button[@data-target="#cat${i}Modal"]`).click()
 
