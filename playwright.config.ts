@@ -9,9 +9,9 @@ require('dotenv').config();
 const config: PlaywrightTestConfig = {
   testDir: './tests',
   /* Maximum time one test can run for. */
-  timeout: 100 * 1000,
+  timeout: 30000,
   expect: {
-    timeout: 10000
+    timeout: 5000
   },
   fullyParallel: false,
   /* Fail the build on CI if you accidentally left test.only in the source code. */

@@ -4,55 +4,44 @@ import { catsList } from '../Constants';
 export class FormPage {
 
     readonly page: Page;	
-
     readonly inputEmail: Locator;
     readonly inputFirstName: Locator;
     readonly inputLastName: Locator;
     readonly selectCat: Locator;
     readonly inputRequest: Locator;
-
     readonly buttonSendFormCancel: Locator;
     readonly buttonSendFormConfirm: Locator;
-
     readonly emailRequiredMessage: Locator;
     readonly emailInvalidMessage: Locator;
     readonly firstNameRequiredMessage: Locator;
     readonly lastNameRequiredMessage: Locator;
     readonly catRequiredMessage: Locator;
     readonly requestRequiredMessage: Locator;
-
     readonly successModalTitle: Locator;
     readonly successModalBody: Locator;
     readonly successModalCloseButton: Locator;
 
     constructor(page: Page) {
-
         this.page = page;
-
         this.inputEmail = page.locator('//input[@id="email"]');
         this.inputFirstName = page.locator('//input[@id="firstName"]');
         this.inputLastName = page.locator('//input[@id="lastName"]');
         this.selectCat = page.locator('//select[@id="cat"]');
         this.inputRequest = page.locator('//textarea[@id="requestText"]');
-            
         this.buttonSendFormCancel = page.getByTestId('form-cancel-button');
         this.buttonSendFormConfirm = page.getByTestId('form-submit-button');
-
         this.emailRequiredMessage = page.getByTestId('email-required-message');
         this.emailInvalidMessage = page.getByTestId('email-invalid-message');
         this.firstNameRequiredMessage = page.getByTestId('first-name-required-message');
         this.lastNameRequiredMessage = page.getByTestId('last-name-required-message');
         this.catRequiredMessage = page.getByTestId('cat-required-message');
         this.requestRequiredMessage = page.getByTestId('request-text-required');
-
         this.successModalTitle = page.getByTestId('sucess-modal-title');
         this.successModalBody = page.getByTestId('success-modal-body');
         this.successModalCloseButton = page.getByTestId('sucess-modal-close-button');
-
     }
 
     async verifyValidation() {
-
         await this.buttonSendFormConfirm.click();
 
         await expect(this.emailRequiredMessage).toBeVisible();
@@ -77,11 +66,9 @@ export class FormPage {
         for (let i = 0; i < 10; i++) {
             await expect(this.page.locator(`//option[@value="${catsList[i].name}"]`)).toHaveText(catsList[i].name);
         }
-
     }
 
     async cancelSendingForm() {
-
         await this.inputEmail.fill(formEmail);
         await this.inputFirstName.fill(formFirstName);
         await this.inputLastName.fill(formLastName);
@@ -97,11 +84,9 @@ export class FormPage {
         await expect(this.inputFirstName).toBeEmpty();
         await expect(this.inputLastName).toBeEmpty();
         await expect(this.inputRequest).toBeEmpty();
-
     }
 
     async sendForm() {
-
         await this.inputEmail.fill(formEmail);
         await this.inputFirstName.fill(formFirstName);
         await this.inputLastName.fill(formLastName);
@@ -119,9 +104,7 @@ export class FormPage {
         await this.successModalCloseButton.click();
         await expect(this.successModalTitle).not.toBeVisible();
         await expect(this.successModalBody).not.toBeVisible();
-        
     }
-
 }
 
 const formEmail = "test@test.hr";

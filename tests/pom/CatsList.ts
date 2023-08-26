@@ -4,22 +4,17 @@ import { catsList } from '../Constants';
 export class CatsListPage {
 
     readonly page: Page;	
-
     readonly successModalCloseButton: Locator;
     readonly buttonCloseModal: Locator;
 
     constructor(page: Page) {
-
         this.page = page;
-
         this.successModalCloseButton = page.getByTestId('sucess-modal-close-button');
         this.buttonCloseModal = page.getByRole('button', { name: 'Close' });
     }
 
     async verifyElements() {
-
         for (let i = 0; i < 10 ; i++) {
-
             await expect(this.page.getByTestId(`cat-${i}-image`)).toBeVisible();
             await expect(this.page.getByTestId(`cat-${i}-name`)).toBeVisible();
             await expect(this.page.getByTestId(`cat-${i}-short-description`)).toBeVisible();
@@ -27,15 +22,11 @@ export class CatsListPage {
 
             await expect(this.page.getByTestId(`cat-${i}-name`)).toHaveText(catsList[i].name);
             await expect(this.page.getByTestId(`cat-${i}-short-description`)).toHaveText(catsList[i].shortDescription);
-        
-        }
-       
+        }  
     }
 
     async viewCatElements() {
-
         for (let i = 0; i < 10; i++) {
-
             await this.page.locator(`//button[@data-target="#cat${i}Modal"]`).click()
 
             await expect(this.page.getByTestId(`cat-${i}-modal-title`)).toBeVisible();
@@ -49,7 +40,6 @@ export class CatsListPage {
             await expect(this.page.getByTestId(`cat-${i}-long-description`)).toHaveText(catsList[i].longDescription);
 
             await this.buttonCloseModal.click();
-
         }
     }
 }

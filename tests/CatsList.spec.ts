@@ -4,7 +4,6 @@ import { SidebarPage } from './pom/Sidebar';
 import { LoginPage } from './pom/Login';
 
 test('VerifyElements', async ({ page }) => {
-
     const loginPage = new LoginPage(page);
     const sidebarPage = new SidebarPage(page);
     const catsListPage = new CatsListPage(page);
@@ -13,11 +12,9 @@ test('VerifyElements', async ({ page }) => {
     await sidebarPage.goToCatsPage();
 
     await catsListPage.verifyElements();   
-
 });
 
 test('ViewCatDetails', async ({ page }) => {
-
     const loginPage = new LoginPage(page);
     const sidebarPage = new SidebarPage(page);
     const catsListPage = new CatsListPage(page);
@@ -26,5 +23,4 @@ test('ViewCatDetails', async ({ page }) => {
     await sidebarPage.goToCatsPage();
 
     await catsListPage.viewCatElements();   
-
 });

@@ -4,7 +4,6 @@ import { SidebarPage } from './pom/Sidebar';
 import { LoginPage } from './pom/Login';
 
 test('VerifyValidation', async ({ page }) => {
-
     const loginPage = new LoginPage(page);
     const sidebarPage = new SidebarPage(page);
     const formPage = new FormPage(page);
@@ -13,11 +12,9 @@ test('VerifyValidation', async ({ page }) => {
     await sidebarPage.goToFormPage();
 
     await formPage.verifyValidation();   
-
 });
 
 test('CancelSendingForm', async ({ page }) => {
-
     const loginPage = new LoginPage(page);
     const sidebarPage = new SidebarPage(page);
     const formPage = new FormPage(page);
@@ -26,11 +23,9 @@ test('CancelSendingForm', async ({ page }) => {
     await sidebarPage.goToFormPage();
 
     await formPage.cancelSendingForm();      
-  
 });
 
 test('SendForm', async ({ page }) => {
-
     const loginPage = new LoginPage(page);
     const sidebarPage = new SidebarPage(page);
     const formPage = new FormPage(page);
@@ -39,5 +34,4 @@ test('SendForm', async ({ page }) => {
     await sidebarPage.goToFormPage();
     
     await formPage.sendForm();      
-  
 });
