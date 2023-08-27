@@ -49,7 +49,6 @@ export class FormPage {
         await expect(this.lastNameRequiredMessage).toBeVisible();
         await expect(this.catRequiredMessage).toBeVisible();
         await expect(this.requestRequiredMessage).toBeVisible();
-
         await expect(this.emailRequiredMessage).toHaveText('Email is required');
         await expect(this.firstNameRequiredMessage).toHaveText('First name is required');
         await expect(this.lastNameRequiredMessage).toHaveText('Last name is required');
@@ -57,7 +56,6 @@ export class FormPage {
         await expect(this.requestRequiredMessage).toHaveText('Request text is required');
 
         await this.inputEmail.fill('test');
-
         await expect(this.emailInvalidMessage).toBeVisible();
         await expect(this.emailInvalidMessage).toHaveText('Invalid email format');
 
@@ -79,7 +77,6 @@ export class FormPage {
         
         await expect(this.successModalTitle).not.toBeVisible();
         await expect(this.successModalBody).not.toBeVisible();
-
         await expect(this.inputEmail).toBeEmpty();
         await expect(this.inputFirstName).toBeEmpty();
         await expect(this.inputLastName).toBeEmpty();
@@ -97,7 +94,6 @@ export class FormPage {
         
         await expect(this.successModalTitle).toBeVisible();
         await expect(this.successModalBody).toBeVisible();
-
         await expect(this.successModalTitle).toHaveText('Form Submitted Successfully');
         await expect(this.successModalBody).toHaveText(`Dear ${formFirstName} ${formLastName}, Thank you for reaching out! Our team will get in touch with you as soon as possible.`);
 
