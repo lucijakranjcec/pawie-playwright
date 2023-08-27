@@ -95,8 +95,7 @@ export class FormPage {
         await expect(this.successModalTitle).toBeVisible();
         await expect(this.successModalBody).toBeVisible();
         await expect(this.successModalTitle).toHaveText('Form Submitted Successfully');
-        await expect(this.successModalBody).toHaveText(`Dear ${formFirstName} ${formLastName}, Thank you for reaching out! Our team will get in touch with you as soon as possible.`);
-
+        await expect(this.successModalBody).toHaveText(`Dear ${formFirstName} ${formLastName}, \nThank you for reaching out! Our team will get in touch with you via e-mail as soon as possible.`);
         await this.successModalCloseButton.click();
         await expect(this.successModalTitle).not.toBeVisible();
         await expect(this.successModalBody).not.toBeVisible();
