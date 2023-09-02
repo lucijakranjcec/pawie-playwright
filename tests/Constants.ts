@@ -21,14 +21,14 @@ export const catsList = [
         breed: "Bengal",
         shortDescription: "Striped Bengal with a curious nature.",
         longDescription: "Despite his name, Tiger is a gentle soul who loves to explore his surroundings. He's incredibly curious and loves to climb. Perfect for families with an outdoor space.",
-        age: "1 years"
+        age: "1 year"
     },
     {
         id: "3",
         name: "Misty",
         breed: "Siamese",
         shortDescription: "Blue-eyed Siamese with a vocal personality.",
-        longDescription: `Misty likes to talk, and she'll happily engage in "conversations" with her owners. She's got a playful side and enjoys interactive toys.`,
+        longDescription: `Misty likes to talk, and she'll happily engage in 'conversations' with her owners. She's got a playful side and enjoys interactive toys.`,
         age: "3 years"
     },
     {

@@ -18,7 +18,7 @@ export class CatsListPage {
             await expect(this.page.getByTestId(`cat-${i}-image`)).toBeVisible();
             await expect(this.page.getByTestId(`cat-${i}-name`)).toBeVisible();
             await expect(this.page.getByTestId(`cat-${i}-short-description`)).toBeVisible();
-            await expect(this.page.locator(`//button[@data-target="#cat${i}Modal"]`)).toBeVisible();
+            await expect(this.page.locator(`//button[@data-target="#catModal-${i}"]`)).toBeVisible();
 
             await expect(this.page.getByTestId(`cat-${i}-name`)).toHaveText(catsList[i].name);
             await expect(this.page.getByTestId(`cat-${i}-short-description`)).toHaveText(catsList[i].shortDescription);
@@ -27,7 +27,7 @@ export class CatsListPage {
 
     async viewElementDetails() {
         for (let i = 0; i < 10; i++) {
-            await this.page.locator(`//button[@data-target="#cat${i}Modal"]`).click()
+            await this.page.locator(`//button[@data-target="#catModal-${i}"]`).click();
 
             await expect(this.page.getByTestId(`cat-${i}-modal-title`)).toBeVisible();
             await expect(this.page.getByTestId(`cat-${i}-breed`)).toBeVisible();
