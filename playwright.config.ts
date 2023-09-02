@@ -25,7 +25,7 @@ const config: PlaywrightTestConfig = {
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
     actionTimeout: 0,
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: 'file:///C:/Users/Lucija/Desktop/zavrsni-web/index.html',
+    baseURL: 'https://pawie.vercel.app/',
 
     trace: 'on',
     headless: false,
