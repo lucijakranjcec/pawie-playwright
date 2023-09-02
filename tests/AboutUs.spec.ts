@@ -22,6 +22,11 @@ test('VerifyLinks', async ({ page, browser }) => {
     await loginPage.loginAdministrator();
     await sidebarPage.goToAboutUsPage();
 
-    await aboutUsPage.verifyLinks();      
-
+    await aboutUsPage.handlePopupAndClose(aboutUsPage.facebookFavicon, facebookLink);
+    await aboutUsPage.handlePopupAndClose(aboutUsPage.twitterFavicon, twitterLink);
+    await aboutUsPage.handlePopupAndClose(aboutUsPage.instagramFavicon, instagramLink);
 });
+
+const facebookLink = "https://web.facebook.com/?_rdc=1&_rdr";
+const twitterLink = "https://twitter.com/";
+const instagramLink = "https://www.instagram.com";
