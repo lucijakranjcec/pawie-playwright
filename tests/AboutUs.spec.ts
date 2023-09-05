@@ -27,6 +27,6 @@ test('VerifyLinks', async ({ page, browser }) => {
     await aboutUsPage.handlePopupAndClose(aboutUsPage.instagramFavicon, instagramLink);
 });
 
-const facebookLink = "https://web.facebook.com/?_rdc=1&_rdr";
+const facebookLink = "https://www.facebook.com/";
 const twitterLink = "https://twitter.com/";
 const instagramLink = "https://www.instagram.com";
