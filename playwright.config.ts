@@ -6,40 +6,53 @@ dotenv.config();
 
 const config: PlaywrightTestConfig = {
   testDir: './tests',
-  timeout: 30000, // lowered max test time to 30s
+  timeout: 30000,
   expect: {
-    timeout: 3000, // lower expect timeout to 3s
+    timeout: 3000,
   },
-  fullyParallel: true, // run tests in parallel as you had
+  fullyParallel: true,
   forbidOnly: !!process.env.CI,
-  retries: process.env.CI ? 1 : 0, // retry only once on CI to save time
-  workers: process.env.CI ? 2 : undefined, // use all CPUs locally, but limit on CI to 2
-
-  reporter: 'list', // simple reporter is faster than html
-
+  retries: process.env.CI ? 1 : 0,
+  workers: process.env.CI ? 2 : undefined,
+  reporter: 'list',
   use: {
-    actionTimeout: 10000, // 10 seconds max per action, avoids hangs
+    actionTimeout: 10000,
     baseURL: 'https://pawie.vercel.app/',
-
     headless: true,
-    viewport: { width: 1280, height: 720 }, // smaller viewport to speed rendering
-
-    trace: 'off', // disable tracing for speed
-    video: 'off', // disable video recording for speed
-
-    // remove permissions if not needed
+    viewport: { width: 1280, height: 720 },
+    trace: 'off',
+    video: 'off',
   },
 
   projects: [
     {
-      name: 'chromium',
+      name: 'Chrome',
       use: {
         ...devices['Desktop Chrome'],
       }
+    },
+    {
+      name: 'Firefox',
+      use: {
+        ...devices['Desktop Firefox'],
+      }
+    },
+    {
+      name: 'Edge',
+      use: {
+        channel: 'msedge',
+        ...devices['Desktop Edge'], // ako postoji
+      },
+    },
+    {
+      name: 'Electron',
+      use: {
+        channel: 'electron',
+      },
     }
   ],
 
-  outputDir: 'test-results/', // keep artifacts if needed
+  outputDir: 'test-results/',
 };
 
 export default config;
