@@ -1,40 +1,35 @@
 import type { PlaywrightTestConfig } from '@playwright/test';
 import { devices } from '@playwright/test';
 import dotenv from 'dotenv';
-import 'dotenv/config';
 
 dotenv.config();
-require('dotenv').config();
 
 const config: PlaywrightTestConfig = {
   testDir: './tests',
-  /* Maximum time one test can run for. */
-  timeout: 50000,
+  timeout: 30000, // lowered max test time to 30s
   expect: {
-    timeout: 5000
+    timeout: 3000, // lower expect timeout to 3s
   },
-  fullyParallel: false,
-  /* Fail the build on CI if you accidentally left test.only in the source code. */
+  fullyParallel: true, // run tests in parallel as you had
   forbidOnly: !!process.env.CI,
-  /* Retry on CI only */
-  retries: process.env.CI ? 2 : 0,
-  /* Opt out of parallel tests on CI. */
-  workers: 1,
-  reporter: 'html',
+  retries: process.env.CI ? 1 : 0, // retry only once on CI to save time
+  workers: process.env.CI ? 2 : undefined, // use all CPUs locally, but limit on CI to 2
+
+  reporter: 'list', // simple reporter is faster than html
+
   use: {
-    /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
-    actionTimeout: 0,
-    /* Base URL to use in actions like `await page.goto('/')`. */
+    actionTimeout: 10000, // 10 seconds max per action, avoids hangs
     baseURL: 'https://pawie.vercel.app/',
 
-    trace: 'on',
-    headless: false,
-    viewport: { width: 1920, height: 1080 },
-    video: 'retry-with-video',
-    permissions: ['notifications'],
+    headless: true,
+    viewport: { width: 1280, height: 720 }, // smaller viewport to speed rendering
+
+    trace: 'off', // disable tracing for speed
+    video: 'off', // disable video recording for speed
+
+    // remove permissions if not needed
   },
 
-  /* Configure projects for major browsers */
   projects: [
     {
       name: 'chromium',
@@ -44,9 +39,7 @@ const config: PlaywrightTestConfig = {
     }
   ],
 
-  /* Folder for test artifacts such as screenshots, videos, traces, etc. */
-  outputDir: 'test-results/',
-
+  outputDir: 'test-results/', // keep artifacts if needed
 };
 
 export default config;

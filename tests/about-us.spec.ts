@@ -28,5 +28,5 @@ test('VerifyLinks', async ({ page, browser }) => {
 });
 
 const facebookLink = "https://www.facebook.com/";
-const twitterLink = "https://twitter.com/";
+const twitterLink = "https://x.com/";
 const instagramLink = "https://www.instagram.com";
